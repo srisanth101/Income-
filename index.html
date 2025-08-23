@@ -14,7 +14,7 @@
         }
         
         body {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
+            background: linear-gradient(135deg, #0f0a1e, #1e103b);
             color: #fff;
             min-height: 100vh;
             padding: 20px;
@@ -32,6 +32,7 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
+            position: relative;
         }
         
         .logo {
@@ -43,22 +44,36 @@
         }
         
         .logo-circle {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, #a855f7, #ec4899);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f7931a, #8b5cf6);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             font-weight: bold;
-            font-size: 24px;
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.7);
+            font-size: 28px;
+            box-shadow: 0 0 40px rgba(247, 147, 26, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-circle::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, rgba(255, 255, 255, 0.2) 100%);
         }
         
         .logo-text {
             font-weight: 700;
             font-size: 28px;
             letter-spacing: 1px;
+            background: linear-gradient(to right, #f7931a, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .profile-button {
@@ -85,7 +100,7 @@
         }
         
         .card {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 24px;
@@ -105,7 +120,7 @@
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #ec4899, #8b5cf6);
+            background: linear-gradient(45deg, #f7931a, #8b5cf6);
             filter: blur(20px);
             opacity: 0.4;
             z-index: -1;
@@ -123,7 +138,7 @@
             font-size: 36px;
             font-weight: 700;
             margin-bottom: 5px;
-            background: linear-gradient(to right, #e2e8f0, #94a3b8);
+            background: linear-gradient(to right, #f7931a, #e2e8f0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             text-align: center;
@@ -149,6 +164,32 @@
             background: rgba(0, 0, 0, 0.2);
             padding: 15px;
             border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .secret-wallet {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .secret-wallet::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            animation: pulse 4s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(0.95); opacity: 0.6; }
         }
         
         .wallet-label {
@@ -176,6 +217,10 @@
             background: linear-gradient(45deg, #3b82f6, #2563eb);
         }
         
+        .bitcoin-wallet .wallet-icon {
+            background: linear-gradient(45deg, #f7931a, #ffc107);
+        }
+        
         .wallet-amount {
             font-size: 18px;
             font-weight: 600;
@@ -198,7 +243,7 @@
         .progress-bar {
             height: 100%;
             width: 75%;
-            background: linear-gradient(to right, #ec4899, #8b5cf6);
+            background: linear-gradient(to right, #f7931a, #8b5cf6);
             border-radius: 3px;
         }
         
@@ -230,7 +275,7 @@
             position: absolute;
             width: 200px;
             height: 200px;
-            background: linear-gradient(45deg, #ec4899, #8b5cf6);
+            background: linear-gradient(45deg, #f7931a, #8b5cf6);
             border-radius: 50%;
             filter: blur(80px);
             opacity: 0.2;
@@ -267,6 +312,51 @@
             font-size: 12px;
             color: #94a3b8;
         }
+        
+        .bitcoin-value {
+            text-align: center;
+            margin: 15px 0;
+            padding: 12px;
+            background: rgba(247, 147, 26, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(247, 147, 26, 0.2);
+        }
+        
+        .btc-amount {
+            font-size: 22px;
+            font-weight: 700;
+            color: #f7931a;
+            margin-bottom: 5px;
+        }
+        
+        .btc-value {
+            font-size: 16px;
+            color: #94a3b8;
+        }
+        
+        .currency-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        .usd-badge {
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+        }
+        
+        .inr-badge {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        .btc-badge {
+            background: rgba(247, 147, 26, 0.2);
+            color: #f7931a;
+        }
     </style>
 </head>
 <body>
@@ -276,11 +366,11 @@
     <div class="container">
         <div class="header">
             <div class="logo">
-    <div class="logo-circle">
-        <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9DmfPGCnEUEjcyva13aMUNGZlp04hWmpsqZzZc7wxxPFYvWy_KSmlHSYYCUY4JvM6366J1SqwhWwPwYVFlgQY0InsUzxcW4aFIUAF32entoodRz-tlYReCgUs4uXh6kL-RX_Nlb3HVyrvkAjK522_vPfg5I-lbYBaHK1ryUCGADEtnw70Uc7FeI6asQQ" alt="KGS Logo" class="logo-img">
-    </div>
-    <div class="logo-text">K.G. Srisanth</div>
-</div>
+                <div class="logo-circle">
+                    <img src="https://blogger.googleusercontent.com/img/a/AVvXsEi9DmfPGCnEUEjcyva13aMUNGZlp04hWmpsqZzZc7wxxPFYvWy_KSmlHSYYCUY4JvM6366J1SqwhWwPwYVFlgQY0InsUzxcW4aFIUAF32entoodRz-tlYReCgUs4uXh6kL-RX_Nlb3HVyrvkAjK522_vPfg5I-lbYBaHK1ryUCGADEtnw70Uc7FeI6asQQ" width="70" height="70" alt="KGS Logo">
+                </div>
+                <div class="logo-text">K.G. Srisanth</div>
+            </div>
             <a href="https://kg.srisanth.com" class="profile-button">
                 <i class="fas fa-user"></i>
                 <span>Get Profile</span>
@@ -289,8 +379,8 @@
         
         <div class="card">
             <h2 class="card-title">TOTAL INCOME</h2>
-            <div class="amount">$186,423</div>
-            <div class="rupee-amount">₹1,54,87,890</div>
+            <div class="amount">$186,423 <span class="currency-badge usd-badge">USD</span></div>
+            <div class="rupee-amount">₹1,54,87,890 <span class="currency-badge inr-badge">INR</span></div>
             
             <div class="value-change">
                 <div class="change-item">
@@ -298,9 +388,14 @@
                     <div class="change-label">This Week</div>
                 </div>
                 <div class="change-item">
-                    <div class="change-value down"><i class="fas fa-arrow-down"></i> $1,230</div>
+                    <div class="change-value up"><i class="fas fa-arrow-up"></i> $9,820</div>
                     <div class="change-label">This Month</div>
                 </div>
+            </div>
+            
+            <div class="bitcoin-value">
+                <div class="btc-amount">1.000 BTC <span class="currency-badge btc-badge">BTC</span></div>
+                <div class="btc-value">≈ $60,455.00 / ₹50,22,865.00</div>
             </div>
         </div>
         
@@ -314,7 +409,7 @@
                     </div>
                     <div>
                         <div>Secret Wallet</div>
-                        <div class="wallet-subtext">Protected</div>
+                        <div class="wallet-subtext">Protected & Encrypted</div>
                     </div>
                 </div>
                 <div class="wallet-amount">
@@ -363,21 +458,26 @@
         </div>
         
         <div class="footer">
-            <p>© 2023 K.G. Srisanth. All rights reserved.</p>
+            <p>© 2025 K.G. Srisanth. All rights reserved.</p>
+            <p>Bitcoin values update in real-time</p>
         </div>
     </div>
 
     <script>
-        // Simulate changing values
+        // Simulate changing values with more increases
         function simulateMarketChanges() {
             const amounts = document.querySelectorAll('.wallet-amount > div:first-child');
-            const rupeeAmounts = document.querySelectorAll('.wallet-subtext');
             const trends = document.querySelectorAll('.trend');
+            const btcValue = document.querySelector('.btc-value');
             
+            // Update wallet values (mostly increase)
             amounts.forEach(amount => {
                 const isDollar = amount.textContent.includes('$');
                 const currentValue = parseFloat(amount.textContent.replace('$', '').replace(',', ''));
-                const change = (Math.random() - 0.3) * 1000;
+                // 80% chance of increase, 20% chance of decrease
+                const willIncrease = Math.random() > 0.2;
+                const changePercent = willIncrease ? (Math.random() * 3) : (Math.random() * -1.5);
+                const change = currentValue * (changePercent / 100);
                 const newValue = Math.max(0, currentValue + change);
                 
                 if (isDollar) {
@@ -385,18 +485,25 @@
                 }
             });
             
-            // Randomly change trend indicators
+            // Update trends (mostly show increases)
             trends.forEach(trend => {
-                if (Math.random() > 0.3) {
+                // 80% chance of showing increase
+                if (Math.random() > 0.2) {
                     trend.className = 'trend up';
                     trend.innerHTML = '<i class="fas fa-arrow-up"></i> <span>Increased by ' + (Math.random() * 5).toFixed(1) + '% this month</span>';
                 } else {
                     trend.className = 'trend down';
-                    trend.innerHTML = '<i class="fas fa-arrow-down"></i> <span>Decreased by ' + (Math.random() * 3).toFixed(1) + '% this month</span>';
+                    trend.innerHTML = '<i class="fas fa-arrow-down"></i> <span>Decreased by ' + (Math.random() * 2).toFixed(1) + '% this month</span>';
                 }
             });
             
-            setTimeout(simulateMarketChanges, 5000);
+            // Update Bitcoin value (simulate real fluctuations)
+            const btcPrices = [58900, 60200, 59500, 61200, 60450, 59800, 60700];
+            const randomBtcPrice = btcPrices[Math.floor(Math.random() * btcPrices.length)];
+            const btcInr = randomBtcPrice * 83;
+            btcValue.textContent = `≈ $${randomBtcPrice.toLocaleString('en-US')}.00 / ₹${btcInr.toLocaleString('en-IN')}.00`;
+            
+            setTimeout(simulateMarketChanges, 3000);
         }
         
         // Start simulation after page load
